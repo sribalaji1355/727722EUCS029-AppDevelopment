@@ -14,18 +14,23 @@ public class JobsService {
     @Autowired
     public JobsRepo jobsRepo;
 
-    public List<Jobs> postTask(List<Jobs> jobs)
+    public Jobs postTask(Jobs jobs)
     {
-        return jobsRepo.saveAll(jobs);
+        return jobsRepo.save(jobs);
     }
 
     public List<Jobs> jobsdata(int staffId)
     {
         return jobsRepo.findByStaffId(staffId);
     }
-
+    
     public void deletejob(int id)
     {
         jobsRepo.deleteById(id);
+    }
+    
+    public List<Jobs> jobsdatabydate(String date) {
+        return jobsRepo.findBydate(date);
+        
     }
 }

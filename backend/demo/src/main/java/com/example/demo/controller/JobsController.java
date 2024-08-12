@@ -26,7 +26,7 @@ public class JobsController {
     public JobsService jobsService;
 
     @PostMapping("/post")
-    public String postTask(@RequestBody List<Jobs> jobs) {
+    public String postTask(@RequestBody Jobs jobs) {
         jobsService.postTask(jobs);
         return "Job Alloted";
     }
@@ -35,6 +35,11 @@ public class JobsController {
     public List<Jobs> jobsdata(@RequestParam int staffId) 
     {
         return jobsService.jobsdata(staffId);
+    }
+    @GetMapping("/getbydate")
+    public List<Jobs> jobsdata(@RequestParam String date) 
+    {
+        return jobsService.jobsdatabydate(date);
     }
 
     @DeleteMapping("/delete")
